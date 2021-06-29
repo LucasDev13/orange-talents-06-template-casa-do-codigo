@@ -1,14 +1,26 @@
 package br.com.casadocodigo.dto;
 
 import br.com.casadocodigo.model.Author;
+import org.hibernate.validator.constraints.Length;
 
+import javax.persistence.Column;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.time.Instant;
 
 public class AuthorDto {
 
     private Long id;
+    @NotBlank
+    @Size(min = 3)
     private String name;
+    @NotBlank
+    @Size(min = 5)
+    @Email()
     private String email;
+    @NotBlank
+    @Size(min = 10, max = 400)
     private String description;
     private Instant instantCreated;
 
