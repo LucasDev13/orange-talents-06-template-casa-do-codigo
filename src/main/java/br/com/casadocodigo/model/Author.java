@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.time.Instant;
 import java.time.LocalDate;
 
 @Entity
@@ -23,14 +25,16 @@ public class Author {
     @Length(min = 3)
     private String email;
     @NotBlank
-    @Length(min = 10)
+    @Length(min = 10, max = 400)
     private String description;
-    private LocalDate registrationDate = LocalDate.now();
+    @NotNull
+    private Instant instantCreated = Instant.now();
 
     public Author() {
     }
 
-    public Author(Long id, String name, String email, String description) {
+    public Author(Long id, String name, String email,
+                  String description) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -38,7 +42,6 @@ public class Author {
     }
 
     public Author(AuthorDto authorDto){
-        id = authorDto.getId();
         name = authorDto.getName();
         email = authorDto.getEmail();
         description = authorDto.getDescription();
@@ -60,7 +63,7 @@ public class Author {
         return description;
     }
 
-    public LocalDate getRegistrationDate() {
-        return registrationDate;
+    public Instant getInstantCreated() {
+        return instantCreated;
     }
 }

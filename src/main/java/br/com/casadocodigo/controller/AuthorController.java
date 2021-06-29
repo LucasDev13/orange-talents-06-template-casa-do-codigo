@@ -20,9 +20,9 @@ public class AuthorController {
     private AuthorRepository authorRepository;
 
     @PostMapping
-    public ResponseEntity<Author> save(@Valid @RequestBody AuthorDto authorDto){
+    public ResponseEntity<AuthorDto> save(@Valid @RequestBody AuthorDto authorDto){
         Author author = new Author(authorDto);
-        authorRepository.save(author);
-        return ResponseEntity.ok().body(author);
+        Author response =  authorRepository.save(author);
+        return ResponseEntity.ok().body(new AuthorDto(response));
     }
 }

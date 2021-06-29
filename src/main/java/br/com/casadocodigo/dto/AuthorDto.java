@@ -2,7 +2,7 @@ package br.com.casadocodigo.dto;
 
 import br.com.casadocodigo.model.Author;
 
-import java.time.LocalDate;
+import java.time.Instant;
 
 public class AuthorDto {
 
@@ -10,18 +10,18 @@ public class AuthorDto {
     private String name;
     private String email;
     private String description;
-    private LocalDate registrationDate = LocalDate.now();
+    private Instant instantCreated;
 
     public AuthorDto() {
     }
 
     public AuthorDto(Long id, String name, String email,
-                     String description, LocalDate registrationDate) {
+                     String description, Instant instantCreated) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.description = description;
-        this.registrationDate = registrationDate;
+        this.instantCreated = instantCreated;
     }
 
     public AuthorDto(Author author){
@@ -29,7 +29,7 @@ public class AuthorDto {
         name = author.getName();
         email = author.getEmail();
         description = author.getDescription();
-        registrationDate = author.getRegistrationDate();
+        instantCreated = author.getInstantCreated();
     }
 
     public Long getId() {
@@ -48,7 +48,7 @@ public class AuthorDto {
         return description;
     }
 
-    public LocalDate getRegistrationDate() {
-        return registrationDate;
+    public Instant getInstantCreated() {
+        return instantCreated;
     }
 }
