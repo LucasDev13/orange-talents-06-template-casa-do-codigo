@@ -27,9 +27,8 @@ public class AuthorDto {
     public AuthorDto() {
     }
 
-    public AuthorDto(Long id, String name, String email,
+    public AuthorDto(String name, String email,
                      String description, Instant instantCreated) {
-        this.id = id;
         this.name = name;
         this.email = email;
         this.description = description;
@@ -37,15 +36,9 @@ public class AuthorDto {
     }
 
     public AuthorDto(Author author){
-        id = author.getId();
         name = author.getName();
         email = author.getEmail();
         description = author.getDescription();
-        instantCreated = author.getInstantCreated();
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getName() {
@@ -58,9 +51,5 @@ public class AuthorDto {
 
     public String getDescription() {
         return description;
-    }
-
-    public Instant getInstantCreated() {
-        return instantCreated;
     }
 }

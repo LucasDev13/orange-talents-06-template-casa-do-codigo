@@ -17,7 +17,7 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotBlank
-    @Length(min = 3)
+    @Size(min = 3)
     @Column(nullable = false)
     private String name;
     @NotBlank
@@ -26,7 +26,7 @@ public class Author {
     @Column(nullable = false)
     private String email;
     @NotBlank
-    @Length(min = 10, max = 400)
+    @Size(min = 10, max = 400)
     @Column(nullable = false)
     private String description;
     @NotNull
@@ -36,9 +36,8 @@ public class Author {
     public Author() {
     }
 
-    public Author(Long id, String name, String email,
+    public Author(String name, String email,
                   String description) {
-        this.id = id;
         this.name = name;
         this.email = email;
         this.description = description;
@@ -48,10 +47,6 @@ public class Author {
         name = authorDto.getName();
         email = authorDto.getEmail();
         description = authorDto.getDescription();
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getName() {
@@ -64,9 +59,5 @@ public class Author {
 
     public String getDescription() {
         return description;
-    }
-
-    public Instant getInstantCreated() {
-        return instantCreated;
     }
 }

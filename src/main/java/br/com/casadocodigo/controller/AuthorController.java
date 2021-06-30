@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(value = "/authors")
+@RequestMapping(value = "/api/authors")
 public class AuthorController {
 
     @Autowired
     private AuthorRepository authorRepository;
 
     @PostMapping
-    public ResponseEntity<AuthorDto> save(@Valid @RequestBody AuthorDto authorDto){
+    public ResponseEntity<?> save(@Valid @RequestBody AuthorDto authorDto){
         Author author = new Author(authorDto);
-        Author response =  authorRepository.save(author);
-        return ResponseEntity.ok().body(new AuthorDto(response));
+        authorRepository.save(author);
+        return ResponseEntity.ok().build();
     }
 }
