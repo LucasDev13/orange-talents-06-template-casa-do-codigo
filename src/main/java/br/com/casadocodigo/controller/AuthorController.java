@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @RestController
@@ -20,6 +21,7 @@ public class AuthorController {
     private AuthorRepository authorRepository;
 
     @PostMapping
+    @Transactional
     public ResponseEntity<?> save(@Valid @RequestBody AuthorDto authorDto){
         Author author = new Author(authorDto);
         authorRepository.save(author);

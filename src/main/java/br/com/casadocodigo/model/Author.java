@@ -33,14 +33,8 @@ public class Author {
     @Column(nullable = false, updatable = false)
     private Instant instantCreated = Instant.now();
 
+    @Deprecated
     public Author() {
-    }
-
-    public Author(String name, String email,
-                  String description) {
-        this.name = name;
-        this.email = email;
-        this.description = description;
     }
 
     public Author(AuthorDto authorDto){

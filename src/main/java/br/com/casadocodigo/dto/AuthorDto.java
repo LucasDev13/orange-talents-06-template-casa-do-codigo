@@ -22,17 +22,9 @@ public class AuthorDto {
     @NotBlank
     @Size(min = 10, max = 400)
     private String description;
-    private Instant instantCreated;
 
+    @Deprecated
     public AuthorDto() {
-    }
-
-    public AuthorDto(String name, String email,
-                     String description, Instant instantCreated) {
-        this.name = name;
-        this.email = email;
-        this.description = description;
-        this.instantCreated = instantCreated;
     }
 
     public AuthorDto(Author author){
