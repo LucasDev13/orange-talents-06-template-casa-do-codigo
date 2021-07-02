@@ -1,8 +1,5 @@
 package br.com.casadocodigo.model;
 
-import br.com.casadocodigo.dto.AuthorDto;
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -26,7 +23,7 @@ public class Author {
     @Column(nullable = false)
     private String email;
     @NotBlank
-    @Size(min = 10, max = 400)
+    @Size(min = 5, max = 400)
     @Column(nullable = false)
     private String description;
     @NotNull

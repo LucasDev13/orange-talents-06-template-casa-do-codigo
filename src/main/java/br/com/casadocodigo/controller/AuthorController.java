@@ -1,9 +1,9 @@
 package br.com.casadocodigo.controller;
 
 import br.com.casadocodigo.config.validation.ValidatorEmail;
-import br.com.casadocodigo.dto.AuthorDto;
 import br.com.casadocodigo.model.Author;
 import br.com.casadocodigo.repository.AuthorRepository;
+import br.com.casadocodigo.request.AuthorRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.WebDataBinder;
@@ -29,8 +29,8 @@ public class AuthorController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<?> save(@Valid @RequestBody AuthorDto authorDto){
-        authorRepository.save(authorDto.toModel());
+    public ResponseEntity<?> saveAuthor(@Valid @RequestBody AuthorRequest authorRequest){
+        authorRepository.save(authorRequest.toModel());
         return ResponseEntity.ok().build();
     }
 }

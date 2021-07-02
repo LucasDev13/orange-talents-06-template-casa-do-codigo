@@ -1,6 +1,6 @@
 package br.com.casadocodigo.config.validation;
 
-import br.com.casadocodigo.dto.AuthorDto;
+import br.com.casadocodigo.request.AuthorRequest;
 import br.com.casadocodigo.model.Author;
 import br.com.casadocodigo.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +17,13 @@ public class ValidatorEmail implements Validator {
     private AuthorRepository authorRepository;
 
     /**
-     * Qual o tipo de parametro que devo aplicar nessa validação
+     * Informa qual o tipo de parametro do controller que devo aplicar nessa validação
      * @param aClass
      * @return
      */
     @Override
     public boolean supports(Class<?> aClass) {
-        return AuthorDto.class.isAssignableFrom(aClass);
+        return AuthorRequest.class.isAssignableFrom(aClass);
     }
 
     @Override
@@ -31,11 +31,10 @@ public class ValidatorEmail implements Validator {
         if(errors.hasErrors()){
             return;
         }
-        AuthorDto request = (AuthorDto) o;
+        AuthorRequest request = (AuthorRequest) o;
         Optional<Author> optional = authorRepository.findByEmail(request.getEmail());
         if(optional.isPresent()){
-            errors.reject("email", null, "Já existe um email com esse nome cadastrado.");
-            System.out.println("Não encontrado.");
+            errors.rejectValue("email", null, "Já existe um email com esse nome cadastrado.");
         }
     }
 }
