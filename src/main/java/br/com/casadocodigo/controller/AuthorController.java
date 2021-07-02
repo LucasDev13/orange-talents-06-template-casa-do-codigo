@@ -30,8 +30,7 @@ public class AuthorController {
     @PostMapping
     @Transactional
     public ResponseEntity<?> save(@Valid @RequestBody AuthorDto authorDto){
-        Author author = new Author(authorDto);
-        authorRepository.save(author);
+        authorRepository.save(authorDto.toModel());
         return ResponseEntity.ok().build();
     }
 }

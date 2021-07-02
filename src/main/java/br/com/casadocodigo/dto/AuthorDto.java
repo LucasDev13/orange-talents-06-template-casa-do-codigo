@@ -27,21 +27,17 @@ public class AuthorDto {
     public AuthorDto() {
     }
 
-    public AuthorDto(Author author){
-        name = author.getName();
-        email = author.getEmail();
-        description = author.getDescription();
+    public AuthorDto(String name, String email, String description) {
+        this.name = name;
+        this.email = email;
+        this.description = description;
     }
 
-    public String getName() {
-        return name;
+    public Author toModel(){
+        return new Author(name, email, description);
     }
 
     public String getEmail() {
         return email;
-    }
-
-    public String getDescription() {
-        return description;
     }
 }

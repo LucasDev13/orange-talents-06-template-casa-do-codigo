@@ -37,21 +37,10 @@ public class Author {
     public Author() {
     }
 
-    public Author(AuthorDto authorDto){
-        name = authorDto.getName();
-        email = authorDto.getEmail();
-        description = authorDto.getDescription();
+    public Author(String name, String email, String description) {
+        this.name = name;
+        this.email = email;
+        this.description = description;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getDescription() {
-        return description;
-    }
 }
