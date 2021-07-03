@@ -1,5 +1,6 @@
 package br.com.casadocodigo.request;
 
+import br.com.casadocodigo.config.validation.UniqueValue;
 import br.com.casadocodigo.model.Category;
 
 import javax.validation.constraints.NotBlank;
@@ -9,6 +10,7 @@ public class CategoryRequest {
 
     @NotBlank
     @Size(min = 1)
+    @UniqueValue(domainClass = Category.class, fieldName = "nameCategory")
     private String nameCategory;
 
     @Deprecated

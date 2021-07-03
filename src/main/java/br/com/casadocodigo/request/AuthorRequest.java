@@ -1,5 +1,6 @@
 package br.com.casadocodigo.request;
 
+import br.com.casadocodigo.config.validation.UniqueValue;
 import br.com.casadocodigo.model.Author;
 
 import javax.validation.constraints.Email;
@@ -14,6 +15,7 @@ public class AuthorRequest {
     @NotBlank
     @Size(min = 5)
     @Email
+    @UniqueValue(domainClass = Author.class, fieldName = "email")
     private String email;
     @NotBlank
     @Size(min = 10, max = 400)
