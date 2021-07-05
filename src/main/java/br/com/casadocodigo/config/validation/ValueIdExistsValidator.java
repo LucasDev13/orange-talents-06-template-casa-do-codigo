@@ -31,7 +31,7 @@ public class ValueIdExistsValidator implements ConstraintValidator<ValueIdExists
         query.setParameter("value", value);
         List<?> list = query.getResultList();
         Assert.state(list.size() <= 1,
-                "Foi encontrado mais de um " + domain + " com o atributo " + domainAttribute);
+                "Foi encontrado mais de um " + domain + " com o atributo " + domainAttribute + "com o atributo = " + value);
         return !list.isEmpty();
     }
 }

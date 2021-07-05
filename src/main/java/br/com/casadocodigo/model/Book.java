@@ -1,5 +1,6 @@
 package br.com.casadocodigo.model;
 
+import br.com.casadocodigo.controller.response.BookResponse;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
@@ -70,5 +71,13 @@ public class Book {
         this.publicationDate = publicationDate;
         this.category = category;
         this.author = author;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
     }
 }

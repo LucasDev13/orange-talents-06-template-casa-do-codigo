@@ -69,11 +69,4 @@ public class BookRequest {
                 this.isbn, this.publicationDate,author, category);
     }
 
-    /**
-     * Esse método foi criado para ajudar o jackson a desserializar a data.
-     * @param publicationDate
-     */
-    public void setPublicationDate(LocalDate publicationDate) {
-        this.publicationDate = publicationDate;
-    }
 }
