@@ -1,7 +1,7 @@
 package br.com.casadocodigo.controller;
 
 import br.com.casadocodigo.repository.CategoryRepository;
-import br.com.casadocodigo.request.CategoryRequest;
+import br.com.casadocodigo.controller.request.CategoryRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

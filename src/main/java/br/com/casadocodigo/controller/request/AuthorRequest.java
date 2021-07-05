@@ -1,4 +1,4 @@
-package br.com.casadocodigo.request;
+package br.com.casadocodigo.controller.request;
 
 import br.com.casadocodigo.config.validation.UniqueValue;
 import br.com.casadocodigo.model.Author;
