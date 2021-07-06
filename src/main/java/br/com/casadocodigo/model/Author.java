@@ -40,4 +40,19 @@ public class Author {
         this.description = description;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Instant getInstantCreated() {
+        return instantCreated;
+    }
 }

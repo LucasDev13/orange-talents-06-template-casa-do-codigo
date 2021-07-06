@@ -21,4 +21,8 @@ public class Category {
     public Category(String nameCategory) {
         this.nameCategory = nameCategory;
     }
+
+    public String getNameCategory() {
+        return nameCategory;
+    }
 }

@@ -1,19 +1,19 @@
-package br.com.casadocodigo.model;
+package br.com.casadocodigo.controller.response;
 
-import br.com.casadocodigo.controller.response.BookResponse;
+import br.com.casadocodigo.config.validation.UniqueValue;
+import br.com.casadocodigo.model.Author;
+import br.com.casadocodigo.model.Book;
+import br.com.casadocodigo.model.Category;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import javax.persistence.*;
+import javax.persistence.Column;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-@Entity
-public class Book {
+public class BookResponseDetail {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
@@ -44,33 +44,23 @@ public class Book {
 
     @NotNull
     @Valid
-    @ManyToOne
     private Category category;
 
     @NotNull
     @Valid
-    @ManyToOne
     private Author author;
 
-    @Deprecated
-    public Book() {
-    }
-
-    public Book(String title, String bookSummary,
-                String summary, BigDecimal price,
-                Integer numberPages, String isbn,
-                LocalDate publicationDate, Author author,
-                Category category
-                ) {
-        this.title = title;
-        this.bookSummary = bookSummary;
-        this.summary = summary;
-        this.price = price;
-        this.numberPages = numberPages;
-        this.isbn = isbn;
-        this.publicationDate = publicationDate;
-        this.category = category;
-        this.author = author;
+    public BookResponseDetail(Book book){
+        this.id = book.getId();
+        this.title = book.getTitle();
+        this.bookSummary = book.getBookSummary();
+        this.summary = book.getSummary();
+        this.price = book.getPrice();
+        this.numberPages = book.getNumberPages();
+        this.isbn = book.getIsbn();
+        this.publicationDate = book.getPublicationDate();
+        this.category = book.getCategory();
+        this.author = book.getAuthor();
     }
 
     public Long getId() {
@@ -112,4 +102,6 @@ public class Book {
     public Author getAuthor() {
         return author;
     }
+
+
 }
