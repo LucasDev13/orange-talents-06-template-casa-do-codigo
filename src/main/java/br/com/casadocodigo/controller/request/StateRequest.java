@@ -18,7 +18,6 @@ public class StateRequest implements UniqueInThatRelationInterface<String, Long>
 
     private Long id;
     @NotBlank
-    //o nome é unico para o mesmo país.
     private String nameState;
 
     @ValueIdExists(domainClass = Country.class, fieldName = "id")

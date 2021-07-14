@@ -29,7 +29,5 @@ public class StateController {
             System.out.println(stateRequest.getNameState());
             stateRepository.save(stateRequest.toModel(entityManager));
            return ResponseEntity.ok().build();
-
-//        return ResponseEntity.notFound().build();
     }
 }

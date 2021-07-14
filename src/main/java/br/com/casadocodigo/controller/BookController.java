@@ -30,8 +30,11 @@ public class BookController {
     @PostMapping
     @Transactional
     public ResponseEntity<?> saveBook(@RequestBody @Valid BookRequest bookRequest){
-        bookRepository.save(bookRequest.toModel(entityManager));
-        return ResponseEntity.ok().build();
+        if(bookRequest != null) {
+            bookRepository.save(bookRequest.toModel(entityManager));
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.badRequest().build();
     }
 
     @GetMapping
@@ -45,10 +48,7 @@ public class BookController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<BookResponseDetail> detailById(@PathVariable Long id){
         Optional<Book> book = bookRepository.findById(id);
-        if(book.isPresent()){
-            return ResponseEntity.ok(new BookResponseDetail(book.get()));
-        }
-        return ResponseEntity.notFound().build();
+        return book.map(value -> ResponseEntity.ok(new BookResponseDetail(value))).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
 }

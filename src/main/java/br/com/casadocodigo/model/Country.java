@@ -28,4 +28,7 @@ public class Country {
         this.nameCountry = nameCountry;
     }
 
+    public Long getId() {
+        return id;
+    }
 }

@@ -1,7 +1,5 @@
 package br.com.casadocodigo.config;
 
-import org.springframework.web.bind.annotation.RestControllerAdvice;
-
 public class ErrorRequest {
 
     private String field;

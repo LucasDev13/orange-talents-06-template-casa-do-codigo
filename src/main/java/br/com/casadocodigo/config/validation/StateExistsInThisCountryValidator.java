@@ -1,5 +1,7 @@
 package br.com.casadocodigo.config.validation;
 
+import org.springframework.util.Assert;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -38,6 +40,8 @@ public class StateExistsInThisCountryValidator implements ConstraintValidator<St
         query.setParameter("id",o.getRelationValue());
 
         List<?> resultList = query.getResultList();
+
+        Assert.state(resultList.size() <= 1, "Foi encontrado mais de um valor igual.");
 
         return resultList.isEmpty();
     }
