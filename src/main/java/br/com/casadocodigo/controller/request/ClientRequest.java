@@ -24,7 +24,7 @@ public class ClientRequest implements CountryStateValidatorInterface {
     @NotBlank
     private String lastNameClient;
 
-    @NotBlank @Document() //@Document ainda não implementado
+    @NotBlank @Document
     @UniqueValue(domainClass = Client.class,fieldName = "document")
     private String document;
 
@@ -34,13 +34,17 @@ public class ClientRequest implements CountryStateValidatorInterface {
     private String complement;
     @NotBlank
     private String city;
+
     @ValueIdExists(domainClass = Country.class, fieldName = "id")
     @NotNull
     private Long idCountry;
     @ValueIdExists(domainClass = State.class, fieldName = "id")
     @NotNull
     private Long idState;
+
+    @NotBlank
     private String phone;
+    @NotBlank
     private String cep;
 
     public ClientRequest() {
